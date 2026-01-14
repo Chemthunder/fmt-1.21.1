@@ -1,7 +1,6 @@
 package net.watchbox.fmt.index;
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.render.entity.EmptyEntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -29,7 +28,6 @@ public interface FmtEntities {
 
     static void index() {
 //        // Entities are Registered Statically
-        //   FabricDefaultAttributeRegistry.register(SHOCKWAVE, ShockwaveEntity.createAttribute());
     }
 
     static void clientIndex() {

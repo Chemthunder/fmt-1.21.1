@@ -18,6 +18,7 @@ public interface FmtItems {
 
     Item BEAUTYS_CANVAS = create("beautys_canvas", BeautysCanvasItem::new, new Item.Settings()
             .maxCount(1)
+            .attributeModifiers(BeautysCanvasItem.createAttributeModifiers())
     );
 
     static Item create(String name, Function<Item.Settings, Item> factory, Item.Settings settings) {
@@ -32,7 +33,7 @@ public interface FmtItems {
     static void index() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(FmtItems::addCombatEntries);
 
-        modifyItemNameColor(BEAUTYS_CANVAS, 0xc4044e);
+        modifyItemNameColor(BEAUTYS_CANVAS, 0xfcdd8d);
     }
 
     private static void addCombatEntries(FabricItemGroupEntries entries) {

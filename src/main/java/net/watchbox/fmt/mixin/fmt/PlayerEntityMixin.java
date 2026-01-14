@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.watchbox.fmt.entity.MothersLoveEntity;
 import net.watchbox.fmt.index.FmtDataComponents;
-import net.watchbox.fmt.index.FmtEntities;
 import net.watchbox.fmt.item.BeautysCanvasItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntity {
@@ -28,16 +28,31 @@ public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntit
         if (target instanceof LivingEntity victim) {
             if (player.getMainHandStack().getItem() instanceof BeautysCanvasItem) {
                 if (victim.hasVehicle() && victim.getVehicle() instanceof MothersLoveEntity mother) {
-                    mother.killAnimation(victim, player.getWorld());
+
                 } else {
                     ItemStack stack = player.getMainHandStack();
                     if (!player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
-                        if (stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) != 6) {
-                            stack.set(FmtDataComponents.CANVAS_PETALS, stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) + 1);
+                        if (player.getAttackCooldownProgress(0.5F) > 0.9F) {
+                            if (stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) != 6) {
+                                stack.set(FmtDataComponents.CANVAS_PETALS, stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) + 1);
+                            }
                         }
                     }
                 }
             }
+
+            if (victim.hasVehicle() && victim.getVehicle() instanceof MothersLoveEntity entity) {
+                if (player.isSneaking()) {
+                    entity.discard();
+                }
+            }
+        }
+    }
+
+    @Inject(method = "shouldDismount", at = @At("HEAD"), cancellable = true)
+    private void fmt$noMoreDismountForYouBih(CallbackInfoReturnable<Boolean> cir) {
+        if (this.getVehicle() instanceof MothersLoveEntity) {
+            cir.setReturnValue(false);
         }
     }
 }
