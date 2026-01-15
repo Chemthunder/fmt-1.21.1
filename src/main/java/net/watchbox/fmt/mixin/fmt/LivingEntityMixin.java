@@ -15,6 +15,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import net.watchbox.fmt.cca.entity.ImmobilizedEntityComponent;
 import net.watchbox.fmt.cca.entity.PlayerFlashComponent;
@@ -116,18 +117,23 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         }
     }
 
-    @Inject(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isInsideWall()Z"))
+    @Inject(method = "baseTick", at = @At("TAIL"))
     private void fmt$noclip(CallbackInfo ci) {
         LivingEntity living = (LivingEntity) (Object) this;
 
+
         if (living instanceof ServerPlayerEntity player) {
+
             MinecraftServer server = living.getServer();
             if (server != null) {
                 ServerWorld targetWorld = server.getWorld(DimensionUtils.waitingRoomKey);
                 if (targetWorld != null) {
-                    BlockPos spawnPos = targetWorld.getSpawnPos();
+                    if (player.isInsideWall()) {
+                        BlockPos spawnPos = targetWorld.getSpawnPos();
 
-                    player.teleport(targetWorld, spawnPos.getX() + 5, spawnPos.getY() + 5, spawnPos.getZ() + 5, living.getYaw(), living.getPitch());
+                        player.teleport(targetWorld, spawnPos.getX() + 5, spawnPos.getY() - 5, spawnPos.getZ() + 5, living.getYaw(), living.getPitch());
+                        player.playSoundToPlayer(FmtSounds.NOCLIP, SoundCategory.PLAYERS, 1, 1);
+                    }
                 }
             }
         }
@@ -160,6 +166,17 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         if (component.immobilizedTicks > 0) {
             component.immobilizedTicks = 0;
             component.sync();
+        }
+    }
+
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    private void noDamae(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        LivingEntity living = (LivingEntity) (Object) this;
+
+        if (living.getWorld().getRegistryKey() == DimensionUtils.waitingRoomKey) {
+            if (!source.isSourceCreativePlayer()) {
+                cir.setReturnValue(false);
+            }
         }
     }
 }

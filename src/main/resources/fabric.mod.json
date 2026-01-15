@@ -30,7 +30,8 @@
   ],
   "custom": {
     "cardinal-components": [
-      "fmt:flash_me_twin"
+      "fmt:flash_me_twin",
+      "fmt:immobilized"
     ]
   },
   "depends": {

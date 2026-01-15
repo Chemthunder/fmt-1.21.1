@@ -10,7 +10,6 @@ import net.minecraft.resource.SynchronousResourceReloader;
 import net.minecraft.util.Identifier;
 import net.watchbox.fmt.Fmt;
 import net.watchbox.fmt.utils.DimensionUtils;
-import org.intellij.lang.annotations.JdkConstants;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

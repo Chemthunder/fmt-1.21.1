@@ -1,8 +1,15 @@
 {
-  "item.epiteth_execute": {
-    "subtitle": "sounds.fmt.epiteth_execute",
+  "item.epithet_execute": {
+    "subtitle": "sounds.fmt.epithet_execute",
     "sounds": [
-      "fmt:item/epiteth_execute"
+      "fmt:item/epithet_execute"
+    ]
+  },
+
+  "interaction.noclip": {
+    "subtitle": "sounds.fmt.noclip",
+    "sounds": [
+      "fmt:interaction/noclip"
     ]
   }
 }

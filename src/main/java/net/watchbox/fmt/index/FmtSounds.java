@@ -13,6 +13,7 @@ public interface FmtSounds {
     Map<SoundEvent, Identifier> SOUNDS = new LinkedHashMap<>();
 
     SoundEvent EPITHET_EXECUTE = create("item.epithet_execute");
+    SoundEvent NOCLIP = create("interaction.noclip");
 
     private static SoundEvent create(String name) {
         SoundEvent soundEvent = SoundEvent.of(Fmt.id(name));

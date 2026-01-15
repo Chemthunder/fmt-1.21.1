@@ -1,5 +1,6 @@
 package net.watchbox.fmt.mixin.fmt;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -10,6 +11,7 @@ import net.watchbox.api.DivineEntity;
 import net.watchbox.fmt.entity.MothersLoveEntity;
 import net.watchbox.fmt.index.FmtDataComponents;
 import net.watchbox.fmt.item.BeautysCanvasItem;
+import net.watchbox.fmt.utils.DimensionUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -59,5 +61,27 @@ public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntit
         }
     }
 
+    @ModifyReturnValue(method = "getBlockInteractionRange", at = @At("RETURN"))
+    private double stepOneSayYoullGetItDone(double original) {
+        PlayerEntity living = (PlayerEntity) (Object) this;
 
+        if (living.getWorld().getRegistryKey() == DimensionUtils.waitingRoomKey) {
+            if (!living.isCreative()) {
+                return 0;
+            }
+        }
+        return original;
+    }
+
+    @ModifyReturnValue(method = "getBlockBreakingSpeed", at = @At("RETURN"))
+    private float stepTwoBidTheBoozeAdieu(float original) {
+        PlayerEntity living = (PlayerEntity) (Object) this;
+
+        if (living.getWorld().getRegistryKey() == DimensionUtils.waitingRoomKey) {
+            if (!living.isCreative()) {
+                return 0;
+            }
+        }
+        return original;
+    }
 }

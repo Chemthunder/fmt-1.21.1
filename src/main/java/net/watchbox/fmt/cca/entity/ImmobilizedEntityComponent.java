@@ -1,7 +1,6 @@
 package net.watchbox.fmt.cca.entity;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.watchbox.fmt.Fmt;
