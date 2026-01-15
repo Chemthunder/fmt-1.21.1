@@ -9,6 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.watchbox.fmt.Fmt;
 import net.watchbox.fmt.item.BeautysCanvasItem;
+import net.watchbox.fmt.item.CoronersEpithetItem;
 
 import java.util.function.Function;
 
@@ -19,6 +20,11 @@ public interface FmtItems {
     Item BEAUTYS_CANVAS = create("beautys_canvas", BeautysCanvasItem::new, new Item.Settings()
             .maxCount(1)
             .attributeModifiers(BeautysCanvasItem.createAttributeModifiers())
+    );
+
+    Item CORONERS_EPITHET = create("coroners_epithet", CoronersEpithetItem::new, new Item.Settings()
+            .maxCount(1)
+            .attributeModifiers(CoronersEpithetItem.createAttributeModifiers())
     );
 
     static Item create(String name, Function<Item.Settings, Item> factory, Item.Settings settings) {
@@ -34,9 +40,11 @@ public interface FmtItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(FmtItems::addCombatEntries);
 
         modifyItemNameColor(BEAUTYS_CANVAS, 0xfcdd8d);
+        modifyItemNameColor(CORONERS_EPITHET, 0x2b1f2e);
     }
 
     private static void addCombatEntries(FabricItemGroupEntries entries) {
         entries.add(BEAUTYS_CANVAS);
+        entries.add(CORONERS_EPITHET);
     }
 }

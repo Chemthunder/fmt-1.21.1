@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.watchbox.api.DivineEntity;
 import net.watchbox.fmt.entity.MothersLoveEntity;
 import net.watchbox.fmt.index.FmtDataComponents;
 import net.watchbox.fmt.item.BeautysCanvasItem;
@@ -41,9 +42,11 @@ public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntit
                 }
             }
 
-            if (victim.hasVehicle() && victim.getVehicle() instanceof MothersLoveEntity entity) {
+            if (victim.hasVehicle()) {
                 if (player.isSneaking()) {
-                    entity.discard();
+                    if (victim.getVehicle() instanceof MothersLoveEntity entity) {
+                        entity.discard();
+                    }
                 }
             }
         }
@@ -51,8 +54,10 @@ public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntit
 
     @Inject(method = "shouldDismount", at = @At("HEAD"), cancellable = true)
     private void fmt$noMoreDismountForYouBih(CallbackInfoReturnable<Boolean> cir) {
-        if (this.getVehicle() instanceof MothersLoveEntity) {
+        if (this.getVehicle() instanceof DivineEntity) {
             cir.setReturnValue(false);
         }
     }
+
+
 }

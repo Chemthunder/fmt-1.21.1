@@ -1,4 +1,9 @@
 {
   "item.fmt.beautys_canvas": "Beauty's Canvas",
-  "lore.canvas": "Bestowed upon a wretched soul by "
+  "item.fmt.coroners_epithet": "Coroner's Epithet",
+
+
+  "lore.canvas": "Bestowed upon a wretched soul by ",
+
+  "sounds.fmt.epiteth_execute": "Someone's time is up."
 }

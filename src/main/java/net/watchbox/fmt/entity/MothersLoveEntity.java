@@ -1,18 +1,13 @@
 package net.watchbox.fmt.entity;
 
-import com.nitron.nitrogen.util.interfaces.ScreenShaker;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
-import net.watchbox.fmt.index.FmtDamageSources;
+import net.watchbox.api.DivineEntity;
 
-public class MothersLoveEntity extends Entity {
+public class MothersLoveEntity extends Entity implements DivineEntity {
     public int area = 0;
     public int maxArea = 9;
 
@@ -20,10 +15,7 @@ public class MothersLoveEntity extends Entity {
         super(type, world);
     }
 
-    @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-
-    }
+    protected void initDataTracker(DataTracker.Builder builder) {}
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {

@@ -1,0 +1,21 @@
+{
+  "type": "fmt:waiting_room_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "fmt:waiting_room",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 1,
+          "block": "minecraft:grass_block"
+        },
+        {
+          "height": 1,
+          "block": "minecraft:poppy"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "fmt:exile_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "fmt:empty",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 1,
+          "block": "minecraft:grass_block"
+        },
+        {
+          "height": 1,
+          "block": "minecraft:poppy"
+        }
+      ]
+    }
+  }
+}

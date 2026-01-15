@@ -1,0 +1,12 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "fmt:item/epithet_gui"
+  },
+  "overrides": [
+    {
+      "predicate": { "is_held": 1.0 },
+      "model": "fmt:item/epithet_handheld"
+    }
+  ]
+}

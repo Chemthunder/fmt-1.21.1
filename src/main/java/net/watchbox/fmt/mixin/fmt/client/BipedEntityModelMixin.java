@@ -3,7 +3,7 @@ package net.watchbox.fmt.mixin.fmt.client;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
-import net.watchbox.fmt.entity.MothersLoveEntity;
+import net.watchbox.api.DivineEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,7 +16,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
             at = {@At("HEAD")}
     )
     private void fmt$setPoseForSitting(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
-        if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof MothersLoveEntity) {
+        if (livingEntity.hasVehicle() && livingEntity.getVehicle() instanceof DivineEntity) {
             this.riding = false;
         }
     }

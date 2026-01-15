@@ -13,6 +13,10 @@
     "requireAnnotations": true
   },
   "client": [
-    "fmt.client.BipedEntityModelMixin"
+    "fmt.client.BipedEntityModelMixin",
+    "fmt.client.DebugHudMixin",
+    "fmt.client.InGameHudMixin",
+    "fmt.client.PlayerEntityRendererMixin",
+    "fmt.client.WorldRendererMixin"
   ]
 }

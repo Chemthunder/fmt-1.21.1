@@ -9,7 +9,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.watchbox.fmt.Fmt;
+import net.watchbox.fmt.client.entity.render.AbyssalRemnantEntityRenderer;
 import net.watchbox.fmt.client.entity.render.MothersLoveEntityRenderer;
+import net.watchbox.fmt.entity.AbyssalRemnantEntity;
 import net.watchbox.fmt.entity.MothersLoveEntity;
 
 public interface FmtEntities {
@@ -17,6 +19,14 @@ public interface FmtEntities {
             "mothers_love",
             EntityType.Builder.create(
                     MothersLoveEntity::new,
+                    SpawnGroup.MISC
+            ).dimensions(1.6f, 0.3f)
+    );
+
+    EntityType<AbyssalRemnantEntity> ABYSSAL_REMNANT = create(
+            "abyssal_remnant",
+            EntityType.Builder.create(
+                    AbyssalRemnantEntity::new,
                     SpawnGroup.MISC
             ).dimensions(1.6f, 0.3f)
     );
@@ -32,5 +42,6 @@ public interface FmtEntities {
 
     static void clientIndex() {
         EntityRendererRegistry.register(MOTHERS_LOVE, MothersLoveEntityRenderer::new);
+        EntityRendererRegistry.register(ABYSSAL_REMNANT, AbyssalRemnantEntityRenderer::new);
     }
 }

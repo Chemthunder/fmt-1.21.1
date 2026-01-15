@@ -20,11 +20,19 @@
     ],
     "fabric-datagen": [
       "net.watchbox.data.FmtDataGenerator"
+    ],
+    "cardinal-components": [
+      "net.watchbox.fmt.cca.FmtComponents"
     ]
   },
   "mixins": [
     "fmt.mixins.json"
   ],
+  "custom": {
+    "cardinal-components": [
+      "fmt:flash_me_twin"
+    ]
+  },
   "depends": {
     "fabricloader": ">=0.18.4",
     "minecraft": "~1.21.1",

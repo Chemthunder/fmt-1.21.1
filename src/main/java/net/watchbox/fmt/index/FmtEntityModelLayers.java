@@ -3,6 +3,7 @@ package net.watchbox.fmt.index;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.watchbox.fmt.Fmt;
+import net.watchbox.fmt.client.entity.model.AbyssalRemnantEntityModel;
 import net.watchbox.fmt.client.entity.model.MothersLoveEntityModel;
 
 import java.util.LinkedHashMap;
@@ -12,6 +13,7 @@ public interface FmtEntityModelLayers {
     Map<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider> MODEL_LAYERS = new LinkedHashMap<>();
 
     EntityModelLayer MOTHERS_LOVE = createModelLayer("mothers_love", MothersLoveEntityModel::getTexturedModelData);
+    EntityModelLayer ABYSSAL_REMNANT = createModelLayer("abyssal_remnant", AbyssalRemnantEntityModel::getTexturedModelData);
 
     private static EntityModelLayer createModelLayer(String name, EntityModelLayerRegistry.TexturedModelDataProvider provider) {
         EntityModelLayer entityModelLayer = createMain(name);

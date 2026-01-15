@@ -18,6 +18,11 @@ public interface FmtDataComponents {
             .build()
     );
 
+    ComponentType<Boolean> EPITHET_TWO_HANDED = create("epithet_two_handed", new ComponentType.Builder<Boolean>()
+            .codec(Codec.BOOL)
+            .build()
+    );
+
     static <T extends ComponentType<?>> T create(String name, T component) {
         COMPONENTS.put(component, Fmt.id(name));
         return component;

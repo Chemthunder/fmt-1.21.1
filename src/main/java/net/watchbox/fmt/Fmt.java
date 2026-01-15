@@ -5,6 +5,7 @@ import net.minecraft.util.Identifier;
 import net.watchbox.fmt.index.FmtDataComponents;
 import net.watchbox.fmt.index.FmtEntities;
 import net.watchbox.fmt.index.FmtItems;
+import net.watchbox.fmt.index.FmtSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +22,7 @@ public class Fmt implements ModInitializer {
         FmtItems.index();
         FmtDataComponents.index();
         FmtEntities.index();
+        FmtSounds.index();
 
 		LOGGER.info("Hello Fabric world!");
 	}

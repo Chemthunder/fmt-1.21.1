@@ -1,0 +1,8 @@
+{
+  "item.epiteth_execute": {
+    "subtitle": "sounds.fmt.epiteth_execute",
+    "sounds": [
+      "fmt:item/epiteth_execute"
+    ]
+  }
+}

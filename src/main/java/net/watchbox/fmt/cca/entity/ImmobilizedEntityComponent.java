@@ -1,5 +1,6 @@
 package net.watchbox.fmt.cca.entity;
 
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
@@ -7,14 +8,14 @@ import net.watchbox.fmt.Fmt;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
-import org.ladysnake.cca.api.v3.component.tick.ClientTickingComponent;
+import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
 
-public class PlayerFlashComponent implements AutoSyncedComponent, ClientTickingComponent {
-    public static final ComponentKey<PlayerFlashComponent> KEY = ComponentRegistry.getOrCreate(Fmt.id("flash_me_twin"), PlayerFlashComponent.class);
-    private final PlayerEntity player;
-    public int flashTicks = 0;
+public class ImmobilizedEntityComponent implements AutoSyncedComponent, CommonTickingComponent {
+    public static final ComponentKey<ImmobilizedEntityComponent> KEY = ComponentRegistry.getOrCreate(Fmt.id("immobilized"), ImmobilizedEntityComponent.class);
+    private final LivingEntity player;
+    public int immobilizedTicks = 0;
 
-    public PlayerFlashComponent(PlayerEntity player) {
+    public ImmobilizedEntityComponent(LivingEntity player) {
         this.player = player;
     }
 
@@ -22,11 +23,12 @@ public class PlayerFlashComponent implements AutoSyncedComponent, ClientTickingC
         KEY.sync(this.player);
     }
 
+
     @Override
-    public void clientTick() {
-        if (flashTicks > 0) {
-            flashTicks--;
-            if (flashTicks == 0) {
+    public void tick() {
+        if (immobilizedTicks > 0) {
+            immobilizedTicks--;
+            if (immobilizedTicks == 0) {
                 sync();
             }
         }
@@ -34,11 +36,11 @@ public class PlayerFlashComponent implements AutoSyncedComponent, ClientTickingC
 
     @Override
     public void readFromNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
-        this.flashTicks = nbtCompound.getInt("flashTicks");
+        this.immobilizedTicks = nbtCompound.getInt("immobilizedTicks");
     }
 
     @Override
     public void writeToNbt(NbtCompound nbtCompound, RegistryWrapper.WrapperLookup wrapperLookup) {
-        nbtCompound.putInt("flashTicks", flashTicks);
+        nbtCompound.putInt("immobilizedTicks", immobilizedTicks);
     }
 }

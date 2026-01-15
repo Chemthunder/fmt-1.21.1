@@ -1,7 +1,6 @@
 package net.watchbox.fmt.client.entity.render;
 
 import com.nitron.nitrogen.render.RenderUtils;
-import net.minecraft.block.entity.EndGatewayBlockEntity;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;

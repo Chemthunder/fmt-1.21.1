@@ -53,7 +53,7 @@ public class BeautysCanvasItem extends Item implements ColorableItem, CustomHitP
         if (stack.getOrDefault(component, 0) > 0) {
             stack.set(component, stack.getOrDefault(component, 0) - 1);
 
-            user.getItemCooldownManager().set(stack.getItem(), 200);
+            user.getItemCooldownManager().set(stack.getItem(), 100);
         }
 
 
@@ -76,14 +76,12 @@ public class BeautysCanvasItem extends Item implements ColorableItem, CustomHitP
         return 0x91333f;
     }
 
-    @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(Text.translatable("lore.canvas").withColor(0xa85144).append(Text.literal("Ethos").formatted(Formatting.OBFUSCATED)));
 
         super.appendTooltip(stack, context, tooltip, type);
     }
 
-    @Override
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
         return !miner.isCreative();
     }
@@ -93,7 +91,6 @@ public class BeautysCanvasItem extends Item implements ColorableItem, CustomHitP
             new SweepParticleEffect(0x463439, 0x2a121a)
     };
 
-    @Override
     public void spawnHitParticles(PlayerEntity player) {
         ParticleUtils.spawnSweepParticles(EFFECTS[player.getRandom().nextInt(EFFECTS.length)], player);
     }

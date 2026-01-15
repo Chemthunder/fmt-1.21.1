@@ -3,9 +3,7 @@ package net.watchbox.fmt.client.entity.model;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.watchbox.fmt.Fmt;
 
 // Made with Blockbench 5.0.7
 // Exported for Minecraft version 1.17+ for Yarn
