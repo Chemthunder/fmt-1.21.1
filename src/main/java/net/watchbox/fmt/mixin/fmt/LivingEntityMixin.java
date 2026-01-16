@@ -21,10 +21,7 @@ import net.watchbox.fmt.cca.entity.ImmobilizedEntityComponent;
 import net.watchbox.fmt.cca.entity.PlayerFlashComponent;
 import net.watchbox.fmt.entity.AbyssalRemnantEntity;
 import net.watchbox.fmt.entity.MothersLoveEntity;
-import net.watchbox.fmt.index.FmtDamageSources;
-import net.watchbox.fmt.index.FmtEntities;
-import net.watchbox.fmt.index.FmtItems;
-import net.watchbox.fmt.index.FmtSounds;
+import net.watchbox.fmt.index.*;
 import net.watchbox.fmt.utils.DimensionUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -82,6 +79,8 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
                     PlayerFlashComponent flash = PlayerFlashComponent.KEY.get(player);
                     flash.flashTicks = 20;
                     flash.sync();
+
+                    player.getStackInHand(player.getActiveHand()).set(FmtDataComponents.CANVAS_PETALS, 0);
                 }
             }
 

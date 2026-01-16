@@ -20,7 +20,7 @@ public interface FmtEntities {
             EntityType.Builder.create(
                     MothersLoveEntity::new,
                     SpawnGroup.MISC
-            ).dimensions(1.6f, 0.3f)
+            ).dimensions(2.8f, 0.3f)
     );
 
     EntityType<AbyssalRemnantEntity> ABYSSAL_REMNANT = create(

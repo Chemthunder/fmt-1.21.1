@@ -36,7 +36,7 @@ public abstract class PlayerEntityMixin extends net.minecraft.entity.LivingEntit
                     ItemStack stack = player.getMainHandStack();
                     if (!player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
                         if (player.getAttackCooldownProgress(0.5F) > 0.9F) {
-                            if (stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) != 6) {
+                            if (stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) != 2) {
                                 stack.set(FmtDataComponents.CANVAS_PETALS, stack.getOrDefault(FmtDataComponents.CANVAS_PETALS, 0) + 1);
                             }
                         }
